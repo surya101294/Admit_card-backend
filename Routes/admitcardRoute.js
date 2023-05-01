@@ -3,29 +3,28 @@ const { Router } = require("express");
 
 const { AdmitcardModel } = require("../Models/admitcard.model");
 
-
 const AdmitcardRouter = Router();
 
-AdmitcardRouter.get('/', async(req,res)=>{
-try {
-  let data= await AdmitcardModel.find({})
-  
-  res.send(data)
-} catch (error) {
-  console.log(error);
-}
+AdmitcardRouter.get('/', async (req, res) => {
+  try {
+    let data = await AdmitcardModel.find({})
+
+    res.send(data)
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 
-AdmitcardRouter.get("/:id" , async(req,res)=>{
-  const {id} = req.params
-try {
-  const data = await AdmitcardModel.find({"_id":id})
-  res.send(data)
-  
-} catch (error) {
- res.send(error) 
-}
+AdmitcardRouter.get("/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const data = await AdmitcardModel.find({ "_id": id })
+    res.send(data)
+
+  } catch (error) {
+    res.send(error)
+  }
 })
 
 
@@ -44,7 +43,7 @@ AdmitcardRouter.post("/add", async (req, res) => {
 
 //delete
 
-AdmitcardRouter.delete("/delete/:id",async (req, res) => {
+AdmitcardRouter.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
